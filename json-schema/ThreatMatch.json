@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ThreatMatch.json",
+  "title": "Google Safe Browsing Threat Match",
+  "description": "A threat match returned by the Google Safe Browsing API.",
+  "type": "object",
+  "properties": {
+    "threatType": {
+      "type": "string",
+      "description": "The type of threat.",
+      "enum": [
+        "MALWARE",
+        "SOCIAL_ENGINEERING",
+        "UNWANTED_SOFTWARE",
+        "POTENTIALLY_HARMFUL_APPLICATION",
+        "THREAT_TYPE_UNSPECIFIED"
+      ]
+    },
+    "platformType": {
+      "type": "string",
+      "description": "The platform type.",
+      "enum": [
+        "WINDOWS",
+        "LINUX",
+        "ANDROID",
+        "OSX",
+        "IOS",
+        "ANY_PLATFORM",
+        "ALL_PLATFORMS",
+        "CHROME",
+        "PLATFORM_TYPE_UNSPECIFIED"
+      ]
+    },
+    "threatEntryType": {
+      "type": "string",
+      "description": "The type of threat entry.",
+      "enum": [
+        "URL",
+        "EXECUTABLE",
+        "THREAT_ENTRY_TYPE_UNSPECIFIED"
+      ]
+    },
+    "threat": {
+      "type": "object",
+      "description": "The threat entry.",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string"
+        }
+      }
+    },
+    "threatEntryMetadata": {
+      "type": "object",
+      "description": "Metadata associated with the threat entry."
+    },
+    "cacheDuration": {
+      "type": "string",
+      "description": "The cache duration for the returned match."
+    }
+  }
+}

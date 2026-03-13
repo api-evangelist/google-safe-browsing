@@ -1,0 +1,249 @@
+openapi: 3.1.0
+info:
+  title: Google Safe Browsing API
+  description: >-
+    The Google Safe Browsing API enables client applications to check web
+    resources (most commonly URLs) against Google-generated lists of unsafe
+    web resources. It supports threat list management, URL checking, and
+    hash-based lookups.
+  version: 4.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/safe-browsing
+servers:
+  - url: https://safebrowsing.googleapis.com/v4
+paths:
+  /threatMatches:find:
+    post:
+      operationId: findThreatMatches
+      summary: Find Threat Matches
+      description: Finds threat entries matching the Safe Browsing lists.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindThreatMatchesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindThreatMatchesResponse'
+  /threatLists:
+    get:
+      operationId: listThreatLists
+      summary: List Threat Lists
+      description: Lists the Safe Browsing threat lists available for download.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatListsResponse'
+  /threatListUpdates:fetch:
+    post:
+      operationId: fetchThreatListUpdates
+      summary: Fetch Threat List Updates
+      description: Fetches the most recent threat list updates.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchThreatListUpdatesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchThreatListUpdatesResponse'
+  /fullHashes:find:
+    post:
+      operationId: findFullHashes
+      summary: Find Full Hashes
+      description: Finds the full hashes that match the requested hash prefixes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindFullHashesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindFullHashesResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key
+  schemas:
+    ThreatInfo:
+      type: object
+      properties:
+        threatTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - MALWARE
+              - SOCIAL_ENGINEERING
+              - UNWANTED_SOFTWARE
+              - POTENTIALLY_HARMFUL_APPLICATION
+              - THREAT_TYPE_UNSPECIFIED
+        platformTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - WINDOWS
+              - LINUX
+              - ANDROID
+              - OSX
+              - IOS
+              - ANY_PLATFORM
+              - ALL_PLATFORMS
+              - CHROME
+              - PLATFORM_TYPE_UNSPECIFIED
+        threatEntryTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - URL
+              - EXECUTABLE
+              - THREAT_ENTRY_TYPE_UNSPECIFIED
+        threatEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatEntry'
+    ThreatEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+        url:
+          type: string
+        digest:
+          type: string
+    ThreatMatch:
+      type: object
+      properties:
+        threatType:
+          type: string
+        platformType:
+          type: string
+        threatEntryType:
+          type: string
+        threat:
+          $ref: '#/components/schemas/ThreatEntry'
+        threatEntryMetadata:
+          type: object
+        cacheDuration:
+          type: string
+    ThreatListDescriptor:
+      type: object
+      properties:
+        threatType:
+          type: string
+        platformType:
+          type: string
+        threatEntryType:
+          type: string
+    FindThreatMatchesRequest:
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        threatInfo:
+          $ref: '#/components/schemas/ThreatInfo'
+    FindThreatMatchesResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatMatch'
+    ListThreatListsResponse:
+      type: object
+      properties:
+        threatLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatListDescriptor'
+    FetchThreatListUpdatesRequest:
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        listUpdateRequests:
+          type: array
+          items:
+            type: object
+            properties:
+              threatType:
+                type: string
+              platformType:
+                type: string
+              threatEntryType:
+                type: string
+              state:
+                type: string
+              constraints:
+                type: object
+    FetchThreatListUpdatesResponse:
+      type: object
+      properties:
+        listUpdateResponses:
+          type: array
+          items:
+            type: object
+        minimumWaitDuration:
+          type: string
+    FindFullHashesRequest:
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        clientStates:
+          type: array
+          items:
+            type: string
+        threatInfo:
+          $ref: '#/components/schemas/ThreatInfo'
+    FindFullHashesResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatMatch'
+        minimumWaitDuration:
+          type: string
+        negativeCacheDuration:
+          type: string
+security:
+  - ApiKeyAuth: []

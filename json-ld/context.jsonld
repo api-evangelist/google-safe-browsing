@@ -1,0 +1,19 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "sb": "https://safebrowsing.googleapis.com/v4/",
+    "WebPage": "schema:WebPage",
+    "url": "schema:url",
+    "name": "schema:name",
+    "description": "schema:description",
+    "potentialAction": "schema:potentialAction",
+    "ActionStatusType": "schema:ActionStatusType",
+    "SecurityThreat": {
+      "@id": "sb:ThreatMatch",
+      "@type": "@id"
+    },
+    "threatType": "sb:threatType",
+    "platformType": "sb:platformType",
+    "threatEntryType": "sb:threatEntryType"
+  }
+}
