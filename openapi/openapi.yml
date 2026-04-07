@@ -16,7 +16,7 @@ paths:
   /threatMatches:find:
     post:
       operationId: findThreatMatches
-      summary: Find Threat Matches
+      summary: Google Safe Browsing Find Threat Matches
       description: Finds threat entries matching the Safe Browsing lists.
       requestBody:
         required: true
@@ -34,7 +34,7 @@ paths:
   /threatLists:
     get:
       operationId: listThreatLists
-      summary: List Threat Lists
+      summary: Google Safe Browsing List Threat Lists
       description: Lists the Safe Browsing threat lists available for download.
       responses:
         '200':
@@ -46,7 +46,7 @@ paths:
   /threatListUpdates:fetch:
     post:
       operationId: fetchThreatListUpdates
-      summary: Fetch Threat List Updates
+      summary: Google Safe Browsing Fetch Threat List Updates
       description: Fetches the most recent threat list updates.
       requestBody:
         required: true
@@ -64,7 +64,7 @@ paths:
   /fullHashes:find:
     post:
       operationId: findFullHashes
-      summary: Find Full Hashes
+      summary: Google Safe Browsing Find Full Hashes
       description: Finds the full hashes that match the requested hash prefixes.
       requestBody:
         required: true
