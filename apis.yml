@@ -12,12 +12,12 @@ modified: '2026-03-16'
 specificationVersion: '0.19'
 type: Index
 tags:
-  - Security
-  - Safe Browsing
-  - Threats
-  - Malware
-  - URLs
   - Google
+  - Malware
+  - Safe Browsing
+  - Security
+  - Threats
+  - URLs
 apis:
   - name: Google Safe Browsing API
     description: >-
@@ -27,10 +27,10 @@ apis:
     humanURL: https://developers.google.com/safe-browsing
     baseURL: https://safebrowsing.googleapis.com/v4
     tags:
+      - Malware
       - Security
       - Threats
       - URLs
-      - Malware
     properties:
       - type: Documentation
         url: https://developers.google.com/safe-browsing/v4/reference/rest

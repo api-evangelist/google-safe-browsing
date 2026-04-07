@@ -31,6 +31,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FindThreatMatchesResponse'
+      tags:
+        - threatMatches:find
   /threatLists:
     get:
       operationId: listThreatLists
@@ -43,6 +45,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListThreatListsResponse'
+      tags:
+        - threatLists
   /threatListUpdates:fetch:
     post:
       operationId: fetchThreatListUpdates
@@ -61,6 +65,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FetchThreatListUpdatesResponse'
+      tags:
+        - threatListUpdates:fetch
   /fullHashes:find:
     post:
       operationId: findFullHashes
@@ -79,6 +85,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FindFullHashesResponse'
+      tags:
+        - fullHashes:find
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -247,3 +255,8 @@ components:
           type: string
 security:
   - ApiKeyAuth: []
+tags:
+  - name: fullHashes:find
+  - name: threatLists
+  - name: threatListUpdates:fetch
+  - name: threatMatches:find
