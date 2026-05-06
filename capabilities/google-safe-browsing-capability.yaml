@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Safe Browsing API
+  description: The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against
+    Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.
+  tags:
+  - Google
+  - Safe
+  - Browsing
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-safe-browsing
+    baseUri: https://safebrowsing.googleapis.com/v4
+    description: Google Safe Browsing API HTTP API.
+    authentication:
+      type: apikey
+      in: query
+      name: key
+      value: '{{GOOGLE_SAFE_BROWSING_TOKEN}}'
+    resources:
+    - name: threatmatches-find
+      path: /threatMatches:find
+      operations:
+      - name: findthreatmatches
+        method: POST
+        description: Google Safe Browsing Find Threat Matches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threatlists
+      path: /threatLists
+      operations:
+      - name: listthreatlists
+        method: GET
+        description: Google Safe Browsing List Threat Lists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threatlistupdates-fetch
+      path: /threatListUpdates:fetch
+      operations:
+      - name: fetchthreatlistupdates
+        method: POST
+        description: Google Safe Browsing Fetch Threat List Updates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: fullhashes-find
+      path: /fullHashes:find
+      operations:
+      - name: findfullhashes
+        method: POST
+        description: Google Safe Browsing Find Full Hashes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-safe-browsing-rest
+    description: REST adapter for Google Safe Browsing API.
+    resources:
+    - path: /threatMatches:find
+      name: findthreatmatches
+      operations:
+      - method: POST
+        name: findthreatmatches
+        description: Google Safe Browsing Find Threat Matches
+        call: google-safe-browsing.findthreatmatches
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threatLists
+      name: listthreatlists
+      operations:
+      - method: GET
+        name: listthreatlists
+        description: Google Safe Browsing List Threat Lists
+        call: google-safe-browsing.listthreatlists
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threatListUpdates:fetch
+      name: fetchthreatlistupdates
+      operations:
+      - method: POST
+        name: fetchthreatlistupdates
+        description: Google Safe Browsing Fetch Threat List Updates
+        call: google-safe-browsing.fetchthreatlistupdates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /fullHashes:find
+      name: findfullhashes
+      operations:
+      - method: POST
+        name: findfullhashes
+        description: Google Safe Browsing Find Full Hashes
+        call: google-safe-browsing.findfullhashes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-safe-browsing-mcp
+    transport: http
+    description: MCP adapter for Google Safe Browsing API for AI agent use.
+    tools:
+    - name: findthreatmatches
+      description: Google Safe Browsing Find Threat Matches
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-safe-browsing.findthreatmatches
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listthreatlists
+      description: Google Safe Browsing List Threat Lists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-safe-browsing.listthreatlists
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetchthreatlistupdates
+      description: Google Safe Browsing Fetch Threat List Updates
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-safe-browsing.fetchthreatlistupdates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: findfullhashes
+      description: Google Safe Browsing Find Full Hashes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-safe-browsing.findfullhashes
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GOOGLE_SAFE_BROWSING_TOKEN: GOOGLE_SAFE_BROWSING_TOKEN
