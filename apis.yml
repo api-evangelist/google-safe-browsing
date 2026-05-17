@@ -38,28 +38,28 @@ apis:
         url: openapi/openapi.yml
       - type: Authentication
         url: https://developers.google.com/safe-browsing/v4/get-started
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developers.google.com/safe-browsing/v4/get-started
       - type: JSONSchema
         url: json-schema/ThreatMatch.json
 common:
   - type: Portal
     url: https://developers.google.com/safe-browsing
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developers.google.com/safe-browsing/v4/get-started
   - type: Documentation
     url: https://developers.google.com/safe-browsing
   - type: Authentication
     url: https://developers.google.com/safe-browsing/v4/get-started
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://developers.google.com/terms
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://policies.google.com/privacy
-  - type: Status
+  - type: StatusPage
     url: https://status.cloud.google.com/
   - type: Support
     url: https://developers.google.com/safe-browsing/v4/support
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/context.jsonld
 maintainers:
   - FN: Kin Lane
