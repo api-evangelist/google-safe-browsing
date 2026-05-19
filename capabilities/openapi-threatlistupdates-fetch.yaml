@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Safe Browsing API — threatListUpdates:fetch
+  description: 'Google Safe Browsing API — threatListUpdates:fetch. 1 operations. Lead operation: Google Safe Browsing Fetch
+    Threat List Updates. Self-contained Naftiko capability covering one Google Safe Browsing business surface.'
+  tags:
+  - Google Safe Browsing
+  - threatListUpdates:fetch
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_SAFE_BROWSING_API_KEY: GOOGLE_SAFE_BROWSING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-threatlistupdates-fetch
+    baseUri: https://safebrowsing.googleapis.com/v4
+    description: Google Safe Browsing API — threatListUpdates:fetch business capability. Self-contained, no shared references.
+    resources:
+    - name: threatListUpdates:fetch
+      path: /threatListUpdates:fetch
+      operations:
+      - name: fetchthreatlistupdates
+        method: POST
+        description: Google Safe Browsing Fetch Threat List Updates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: key
+      value: '{{env.GOOGLE_SAFE_BROWSING_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: openapi-threatlistupdates-fetch-rest
+    port: 8080
+    description: REST adapter for Google Safe Browsing API — threatListUpdates:fetch. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/threatlistupdates-fetch
+      name: threatlistupdates-fetch
+      description: REST surface for threatListUpdates:fetch.
+      operations:
+      - method: POST
+        name: fetchthreatlistupdates
+        description: Google Safe Browsing Fetch Threat List Updates
+        call: openapi-threatlistupdates-fetch.fetchthreatlistupdates
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-threatlistupdates-fetch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Safe Browsing API — threatListUpdates:fetch. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: google-safe-browsing-fetch-threat
+      description: Google Safe Browsing Fetch Threat List Updates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: openapi-threatlistupdates-fetch.fetchthreatlistupdates
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

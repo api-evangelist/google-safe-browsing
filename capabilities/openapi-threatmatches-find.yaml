@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Safe Browsing API — threatMatches:find
+  description: 'Google Safe Browsing API — threatMatches:find. 1 operations. Lead operation: Google Safe Browsing Find Threat
+    Matches. Self-contained Naftiko capability covering one Google Safe Browsing business surface.'
+  tags:
+  - Google Safe Browsing
+  - threatMatches:find
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_SAFE_BROWSING_API_KEY: GOOGLE_SAFE_BROWSING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-threatmatches-find
+    baseUri: https://safebrowsing.googleapis.com/v4
+    description: Google Safe Browsing API — threatMatches:find business capability. Self-contained, no shared references.
+    resources:
+    - name: threatMatches:find
+      path: /threatMatches:find
+      operations:
+      - name: findthreatmatches
+        method: POST
+        description: Google Safe Browsing Find Threat Matches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: key
+      value: '{{env.GOOGLE_SAFE_BROWSING_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: openapi-threatmatches-find-rest
+    port: 8080
+    description: REST adapter for Google Safe Browsing API — threatMatches:find. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/threatmatches-find
+      name: threatmatches-find
+      description: REST surface for threatMatches:find.
+      operations:
+      - method: POST
+        name: findthreatmatches
+        description: Google Safe Browsing Find Threat Matches
+        call: openapi-threatmatches-find.findthreatmatches
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-threatmatches-find-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Safe Browsing API — threatMatches:find. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: google-safe-browsing-find-threat
+      description: Google Safe Browsing Find Threat Matches
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: openapi-threatmatches-find.findthreatmatches
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
