@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Safe Browsing API",
+    "version": "4.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "threatMatches:find",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Safe Browsing Find Threat Matches",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://safebrowsing.googleapis.com/v4/threatMatches:find",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finds threat entries matching the Safe Browsing lists."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "threatLists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Safe Browsing List Threat Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://safebrowsing.googleapis.com/v4/threatLists"
+          },
+          "docs": "Lists the Safe Browsing threat lists available for download."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "threatListUpdates:fetch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Safe Browsing Fetch Threat List Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://safebrowsing.googleapis.com/v4/threatListUpdates:fetch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches the most recent threat list updates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "fullHashes:find",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Safe Browsing Find Full Hashes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://safebrowsing.googleapis.com/v4/fullHashes:find",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finds the full hashes that match the requested hash prefixes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
