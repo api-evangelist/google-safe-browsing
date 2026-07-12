@@ -41,6 +41,12 @@ apis:
       - type: JSONSchema
         url: json-schema/ThreatMatch.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-safe-browsing-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-safe-browsing-domain-security.yml
+  - type: Authentication
+    url: authentication/google-safe-browsing-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/google
   - type: Portal
