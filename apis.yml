@@ -41,6 +41,8 @@ apis:
       - type: JSONSchema
         url: json-schema/ThreatMatch.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-safe-browsing-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-safe-browsing-vulnerability-disclosure.yml
   - type: DomainSecurity
