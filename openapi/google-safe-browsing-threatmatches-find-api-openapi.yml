@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: Google Safe Browsing fullHashes:find threatMatches:find API
+  description: The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.
+  version: 4.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/safe-browsing
+servers:
+- url: https://safebrowsing.googleapis.com/v4
+security:
+- ApiKeyAuth: []
+tags:
+- name: threatMatches:find
+paths:
+  /threatMatches:find:
+    post:
+      operationId: findThreatMatches
+      summary: Google Safe Browsing Find Threat Matches
+      description: Finds threat entries matching the Safe Browsing lists.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindThreatMatchesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindThreatMatchesResponse'
+      tags:
+      - threatMatches:find
+components:
+  schemas:
+    FindThreatMatchesResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatMatch'
+    ThreatInfo:
+      type: object
+      properties:
+        threatTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - MALWARE
+            - SOCIAL_ENGINEERING
+            - UNWANTED_SOFTWARE
+            - POTENTIALLY_HARMFUL_APPLICATION
+            - THREAT_TYPE_UNSPECIFIED
+        platformTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - WINDOWS
+            - LINUX
+            - ANDROID
+            - OSX
+            - IOS
+            - ANY_PLATFORM
+            - ALL_PLATFORMS
+            - CHROME
+            - PLATFORM_TYPE_UNSPECIFIED
+        threatEntryTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - URL
+            - EXECUTABLE
+            - THREAT_ENTRY_TYPE_UNSPECIFIED
+        threatEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatEntry'
+    FindThreatMatchesRequest:
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        threatInfo:
+          $ref: '#/components/schemas/ThreatInfo'
+    ThreatMatch:
+      type: object
+      properties:
+        threatType:
+          type: string
+        platformType:
+          type: string
+        threatEntryType:
+          type: string
+        threat:
+          $ref: '#/components/schemas/ThreatEntry'
+        threatEntryMetadata:
+          type: object
+        cacheDuration:
+          type: string
+    ThreatEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+        url:
+          type: string
+        digest:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key

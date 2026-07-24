@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Google Safe Browsing fullHashes:find threatListUpdates:fetch API
+  description: The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.
+  version: 4.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/safe-browsing
+servers:
+- url: https://safebrowsing.googleapis.com/v4
+security:
+- ApiKeyAuth: []
+tags:
+- name: threatListUpdates:fetch
+paths:
+  /threatListUpdates:fetch:
+    post:
+      operationId: fetchThreatListUpdates
+      summary: Google Safe Browsing Fetch Threat List Updates
+      description: Fetches the most recent threat list updates.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchThreatListUpdatesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchThreatListUpdatesResponse'
+      tags:
+      - threatListUpdates:fetch
+components:
+  schemas:
+    FetchThreatListUpdatesRequest:
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        listUpdateRequests:
+          type: array
+          items:
+            type: object
+            properties:
+              threatType:
+                type: string
+              platformType:
+                type: string
+              threatEntryType:
+                type: string
+              state:
+                type: string
+              constraints:
+                type: object
+    FetchThreatListUpdatesResponse:
+      type: object
+      properties:
+        listUpdateResponses:
+          type: array
+          items:
+            type: object
+        minimumWaitDuration:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key

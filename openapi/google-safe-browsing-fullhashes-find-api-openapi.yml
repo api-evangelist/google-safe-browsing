@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: Google Safe Browsing fullHashes:find API
+  description: The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.
+  version: 4.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/safe-browsing
+servers:
+- url: https://safebrowsing.googleapis.com/v4
+security:
+- ApiKeyAuth: []
+tags:
+- name: fullHashes:find
+paths:
+  /fullHashes:find:
+    post:
+      operationId: findFullHashes
+      summary: Google Safe Browsing Find Full Hashes
+      description: Finds the full hashes that match the requested hash prefixes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindFullHashesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindFullHashesResponse'
+      tags:
+      - fullHashes:find
+components:
+  schemas:
+    FindFullHashesRequest:
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        clientStates:
+          type: array
+          items:
+            type: string
+        threatInfo:
+          $ref: '#/components/schemas/ThreatInfo'
+    ThreatInfo:
+      type: object
+      properties:
+        threatTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - MALWARE
+            - SOCIAL_ENGINEERING
+            - UNWANTED_SOFTWARE
+            - POTENTIALLY_HARMFUL_APPLICATION
+            - THREAT_TYPE_UNSPECIFIED
+        platformTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - WINDOWS
+            - LINUX
+            - ANDROID
+            - OSX
+            - IOS
+            - ANY_PLATFORM
+            - ALL_PLATFORMS
+            - CHROME
+            - PLATFORM_TYPE_UNSPECIFIED
+        threatEntryTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - URL
+            - EXECUTABLE
+            - THREAT_ENTRY_TYPE_UNSPECIFIED
+        threatEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatEntry'
+    FindFullHashesResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatMatch'
+        minimumWaitDuration:
+          type: string
+        negativeCacheDuration:
+          type: string
+    ThreatMatch:
+      type: object
+      properties:
+        threatType:
+          type: string
+        platformType:
+          type: string
+        threatEntryType:
+          type: string
+        threat:
+          $ref: '#/components/schemas/ThreatEntry'
+        threatEntryMetadata:
+          type: object
+        cacheDuration:
+          type: string
+    ThreatEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+        url:
+          type: string
+        digest:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key

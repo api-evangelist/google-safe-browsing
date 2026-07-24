@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: Google Safe Browsing fullHashes:find threatLists API
+  description: The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.
+  version: 4.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/safe-browsing
+servers:
+- url: https://safebrowsing.googleapis.com/v4
+security:
+- ApiKeyAuth: []
+tags:
+- name: threatLists
+paths:
+  /threatLists:
+    get:
+      operationId: listThreatLists
+      summary: Google Safe Browsing List Threat Lists
+      description: Lists the Safe Browsing threat lists available for download.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatListsResponse'
+      tags:
+      - threatLists
+components:
+  schemas:
+    ThreatListDescriptor:
+      type: object
+      properties:
+        threatType:
+          type: string
+        platformType:
+          type: string
+        threatEntryType:
+          type: string
+    ListThreatListsResponse:
+      type: object
+      properties:
+        threatLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatListDescriptor'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key
