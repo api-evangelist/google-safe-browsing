@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "206db851-6adb-45bc-abed-0861d8f56b3e",
+    "name": "Google Safe Browsing fullHashes:find API",
+    "description": "The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:50:01.000Z",
+    "updatedAt": "2026-07-28T01:50:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-206db851-6adb-45bc-abed-0861d8f56b3e"
+  },
+  "item": [
+    {
+      "name": "fullHashes:find",
+      "item": [
+        {
+          "name": "Google Safe Browsing Find Full Hashes",
+          "id": "64badcae-414e-4db4-96d6-65f523ca5cb9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"clientStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"threatInfo\": {\n    \"threatTypes\": [\n      \"THREAT_TYPE_UNSPECIFIED\",\n      \"POTENTIALLY_HARMFUL_APPLICATION\"\n    ],\n    \"platformTypes\": [\n      \"IOS\",\n      \"IOS\"\n    ],\n    \"threatEntryTypes\": [\n      \"EXECUTABLE\",\n      \"THREAT_ENTRY_TYPE_UNSPECIFIED\"\n    ],\n    \"threatEntries\": [\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      },\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/fullHashes:find",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fullHashes:find"
+              ]
+            },
+            "description": "Finds the full hashes that match the requested hash prefixes."
+          },
+          "response": [
+            {
+              "id": "021ae196-e9f4-4823-a751-6faf00a2ecaf",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"clientStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"threatInfo\": {\n    \"threatTypes\": [\n      \"THREAT_TYPE_UNSPECIFIED\",\n      \"POTENTIALLY_HARMFUL_APPLICATION\"\n    ],\n    \"platformTypes\": [\n      \"IOS\",\n      \"IOS\"\n    ],\n    \"threatEntryTypes\": [\n      \"EXECUTABLE\",\n      \"THREAT_ENTRY_TYPE_UNSPECIFIED\"\n    ],\n    \"threatEntries\": [\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      },\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fullHashes:find?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fullHashes:find"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"matches\": [\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\",\n      \"threat\": {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      },\n      \"threatEntryMetadata\": {},\n      \"cacheDuration\": \"<string>\"\n    },\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\",\n      \"threat\": {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      },\n      \"threatEntryMetadata\": {},\n      \"cacheDuration\": \"<string>\"\n    }\n  ],\n  \"minimumWaitDuration\": \"<string>\",\n  \"negativeCacheDuration\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:50:02.000Z",
+              "updatedAt": "2026-07-28T01:50:02.000Z",
+              "uid": "35240-021ae196-e9f4-4823-a751-6faf00a2ecaf"
+            }
+          ],
+          "createdAt": "2026-07-28T01:50:02.000Z",
+          "updatedAt": "2026-07-28T01:50:02.000Z",
+          "uid": "35240-64badcae-414e-4db4-96d6-65f523ca5cb9"
+        }
+      ],
+      "id": "7af76c7c-d405-4941-b108-4951d95d6600",
+      "createdAt": "2026-07-28T01:50:02.000Z",
+      "updatedAt": "2026-07-28T01:50:02.000Z",
+      "uid": "35240-7af76c7c-d405-4941-b108-4951d95d6600"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://safebrowsing.googleapis.com/v4"
+    }
+  ]
+}

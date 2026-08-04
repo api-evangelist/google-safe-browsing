@@ -1,0 +1,20 @@
+{
+  "provider": "google-safe-browsing",
+  "sources": [
+    "google-safe-browsing-fullhashes-find-api-openapi.yml",
+    "google-safe-browsing-threatlists-api-openapi.yml",
+    "google-safe-browsing-threatlistupdates-fetch-api-openapi.yml",
+    "google-safe-browsing-threatmatches-find-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-safe-browsing-fullhashes-find-api-openapi.yml",
+    "google-safe-browsing-threatlists-api-openapi.yml",
+    "google-safe-browsing-threatlistupdates-fetch-api-openapi.yml",
+    "google-safe-browsing-threatmatches-find-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

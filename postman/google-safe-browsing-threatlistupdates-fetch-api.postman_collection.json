@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "4a07a7e3-774d-4a3d-906b-60f55892f99f",
+    "name": "Google Safe Browsing fullHashes:find threatListUpdates:fetch API",
+    "description": "The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:50:17.000Z",
+    "updatedAt": "2026-07-28T01:50:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4a07a7e3-774d-4a3d-906b-60f55892f99f"
+  },
+  "item": [
+    {
+      "name": "threatListUpdates:fetch",
+      "item": [
+        {
+          "name": "Google Safe Browsing Fetch Threat List Updates",
+          "id": "23837fb2-9c24-44d3-aba1-497d816c8fa1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"listUpdateRequests\": [\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\",\n      \"state\": \"<string>\",\n      \"constraints\": {}\n    },\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\",\n      \"state\": \"<string>\",\n      \"constraints\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/threatListUpdates:fetch",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "threatListUpdates:fetch"
+              ]
+            },
+            "description": "Fetches the most recent threat list updates."
+          },
+          "response": [
+            {
+              "id": "ad0ecf46-18e2-40c2-bcd0-acb8358637e6",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"listUpdateRequests\": [\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\",\n      \"state\": \"<string>\",\n      \"constraints\": {}\n    },\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\",\n      \"state\": \"<string>\",\n      \"constraints\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/threatListUpdates:fetch?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "threatListUpdates:fetch"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"minimumWaitDuration\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:50:17.000Z",
+              "updatedAt": "2026-07-28T01:50:17.000Z",
+              "uid": "35240-ad0ecf46-18e2-40c2-bcd0-acb8358637e6"
+            }
+          ],
+          "createdAt": "2026-07-28T01:50:17.000Z",
+          "updatedAt": "2026-07-28T01:50:17.000Z",
+          "uid": "35240-23837fb2-9c24-44d3-aba1-497d816c8fa1"
+        }
+      ],
+      "id": "48f92f48-6e89-4992-a4f7-469c747d3cd8",
+      "createdAt": "2026-07-28T01:50:17.000Z",
+      "updatedAt": "2026-07-28T01:50:17.000Z",
+      "uid": "35240-48f92f48-6e89-4992-a4f7-469c747d3cd8"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://safebrowsing.googleapis.com/v4"
+    }
+  ]
+}

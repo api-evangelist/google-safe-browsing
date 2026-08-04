@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "02056ce6-adc2-47d7-9285-a1091751080e",
+    "name": "Google Safe Browsing fullHashes:find threatLists API",
+    "description": "The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:50:15.000Z",
+    "updatedAt": "2026-07-28T01:50:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-02056ce6-adc2-47d7-9285-a1091751080e"
+  },
+  "item": [
+    {
+      "name": "threatLists",
+      "item": [
+        {
+          "name": "Google Safe Browsing List Threat Lists",
+          "id": "ebb82d5a-eea0-48f9-939f-e315b403c029",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/threatLists",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "threatLists"
+              ]
+            },
+            "description": "Lists the Safe Browsing threat lists available for download."
+          },
+          "response": [
+            {
+              "id": "fa627302-f797-41ef-bf47-589aa460cb27",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/threatLists?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "threatLists"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"threatLists\": [\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\"\n    },\n    {\n      \"threatType\": \"<string>\",\n      \"platformType\": \"<string>\",\n      \"threatEntryType\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:50:16.000Z",
+              "updatedAt": "2026-07-28T01:50:16.000Z",
+              "uid": "35240-fa627302-f797-41ef-bf47-589aa460cb27"
+            }
+          ],
+          "createdAt": "2026-07-28T01:50:16.000Z",
+          "updatedAt": "2026-07-28T01:50:16.000Z",
+          "uid": "35240-ebb82d5a-eea0-48f9-939f-e315b403c029"
+        }
+      ],
+      "id": "275ee1bc-4025-455d-888e-c2dc66bfabec",
+      "createdAt": "2026-07-28T01:50:16.000Z",
+      "updatedAt": "2026-07-28T01:50:16.000Z",
+      "uid": "35240-275ee1bc-4025-455d-888e-c2dc66bfabec"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://safebrowsing.googleapis.com/v4"
+    }
+  ]
+}
