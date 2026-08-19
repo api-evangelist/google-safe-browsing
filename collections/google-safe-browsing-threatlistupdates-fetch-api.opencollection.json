@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Safe Browsing fullHashes:find threatListUpdates:fetch API",
+    "version": "4.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "threatListUpdates:fetch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Safe Browsing Fetch Threat List Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://safebrowsing.googleapis.com/v4/threatListUpdates:fetch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches the most recent threat list updates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Safe Browsing fullHashes:find threatLists API",
+    "version": "4.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "threatLists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Safe Browsing List Threat Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://safebrowsing.googleapis.com/v4/threatLists"
+          },
+          "docs": "Lists the Safe Browsing threat lists available for download."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

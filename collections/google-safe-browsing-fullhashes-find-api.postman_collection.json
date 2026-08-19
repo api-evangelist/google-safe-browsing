@@ -1,0 +1,145 @@
+{
+  "item": [
+    {
+      "id": "42f22d5d-91b0-4fca-a036-82cb812bcde6",
+      "name": "fullHashes:find",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd96f0c6-42d5-4aa1-bd9c-7eaf6bdfb072",
+          "name": "Google Safe Browsing Find Full Hashes",
+          "request": {
+            "name": "Google Safe Browsing Find Full Hashes",
+            "description": {
+              "content": "Finds the full hashes that match the requested hash prefixes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fullHashes:find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"clientStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"threatInfo\": {\n    \"threatTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"platformTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"threatEntryTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"threatEntries\": [\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      },\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "450d9387-2cbd-44bb-b50d-cf8a875c41eb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fullHashes:find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"clientStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"threatInfo\": {\n    \"threatTypes\": [\n      \"THREAT_TYPE_UNSPECIFIED\",\n      \"MALWARE\"\n    ],\n    \"platformTypes\": [\n      \"OSX\",\n      \"CHROME\"\n    ],\n    \"threatEntryTypes\": [\n      \"THREAT_ENTRY_TYPE_UNSPECIFIED\",\n      \"URL\"\n    ],\n    \"threatEntries\": [\n      {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      },\n      {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matches\": [\n    {\n      \"threatType\": \"string\",\n      \"platformType\": \"string\",\n      \"threatEntryType\": \"string\",\n      \"threat\": {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      },\n      \"threatEntryMetadata\": {},\n      \"cacheDuration\": \"string\"\n    },\n    {\n      \"threatType\": \"string\",\n      \"platformType\": \"string\",\n      \"threatEntryType\": \"string\",\n      \"threat\": {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      },\n      \"threatEntryMetadata\": {},\n      \"cacheDuration\": \"string\"\n    }\n  ],\n  \"minimumWaitDuration\": \"string\",\n  \"negativeCacheDuration\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://safebrowsing.googleapis.com/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0eda824d-6e60-44d4-a43b-b453f67c6b76",
+    "name": "Google Safe Browsing fullHashes:find API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

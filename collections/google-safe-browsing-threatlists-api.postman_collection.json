@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "a39168bd-c048-4d92-b46d-932a0d11ecea",
+      "name": "threatLists",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "22e0853b-f0e7-4435-8aad-7d3220bce5b0",
+          "name": "Google Safe Browsing List Threat Lists",
+          "request": {
+            "name": "Google Safe Browsing List Threat Lists",
+            "description": {
+              "content": "Lists the Safe Browsing threat lists available for download.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threatLists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36ecf3dd-ac49-45d3-84cb-a935d11e7e25",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threatLists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"threatLists\": [\n    {\n      \"threatType\": \"string\",\n      \"platformType\": \"string\",\n      \"threatEntryType\": \"string\"\n    },\n    {\n      \"threatType\": \"string\",\n      \"platformType\": \"string\",\n      \"threatEntryType\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://safebrowsing.googleapis.com/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "42edd17b-ceaa-4264-9391-972390cd73b5",
+    "name": "Google Safe Browsing fullHashes:find threatLists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

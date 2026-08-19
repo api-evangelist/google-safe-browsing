@@ -1,0 +1,145 @@
+{
+  "item": [
+    {
+      "id": "d3a28cd5-12a4-4112-9465-dd71fd681323",
+      "name": "threatMatches:find",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38cef5e1-0ffe-4c70-8926-dc7b47ac2fc8",
+          "name": "Google Safe Browsing Find Threat Matches",
+          "request": {
+            "name": "Google Safe Browsing Find Threat Matches",
+            "description": {
+              "content": "Finds threat entries matching the Safe Browsing lists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threatMatches:find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"threatInfo\": {\n    \"threatTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"platformTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"threatEntryTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"threatEntries\": [\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      },\n      {\n        \"hash\": \"<string>\",\n        \"url\": \"<string>\",\n        \"digest\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7f976bb-adc2-4565-9641-3c06952efb13",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threatMatches:find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientId\": \"<string>\",\n    \"clientVersion\": \"<string>\"\n  },\n  \"threatInfo\": {\n    \"threatTypes\": [\n      \"POTENTIALLY_HARMFUL_APPLICATION\",\n      \"POTENTIALLY_HARMFUL_APPLICATION\"\n    ],\n    \"platformTypes\": [\n      \"LINUX\",\n      \"WINDOWS\"\n    ],\n    \"threatEntryTypes\": [\n      \"URL\",\n      \"EXECUTABLE\"\n    ],\n    \"threatEntries\": [\n      {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      },\n      {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matches\": [\n    {\n      \"threatType\": \"string\",\n      \"platformType\": \"string\",\n      \"threatEntryType\": \"string\",\n      \"threat\": {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      },\n      \"threatEntryMetadata\": {},\n      \"cacheDuration\": \"string\"\n    },\n    {\n      \"threatType\": \"string\",\n      \"platformType\": \"string\",\n      \"threatEntryType\": \"string\",\n      \"threat\": {\n        \"hash\": \"string\",\n        \"url\": \"string\",\n        \"digest\": \"string\"\n      },\n      \"threatEntryMetadata\": {},\n      \"cacheDuration\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://safebrowsing.googleapis.com/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c76b204e-2e3f-4a34-9d17-2d62dde6e7ec",
+    "name": "Google Safe Browsing fullHashes:find threatMatches:find API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

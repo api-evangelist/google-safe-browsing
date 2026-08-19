@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Safe Browsing fullHashes:find threatMatches:find API",
+    "version": "4.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "threatMatches:find",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Safe Browsing Find Threat Matches",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://safebrowsing.googleapis.com/v4/threatMatches:find",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finds threat entries matching the Safe Browsing lists."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
