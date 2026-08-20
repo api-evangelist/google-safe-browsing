@@ -54,7 +54,8 @@ apis:
   description: The threatLists API from Google Safe Browsing — 1 operation(s) for threatlists.
   humanURL: https://developers.google.com/safe-browsing
   baseURL: https://safebrowsing.googleapis.com/v4
-  tags:
+  tags: []
+  tags_raw:
   - threatLists
   properties:
   - type: OpenAPI
