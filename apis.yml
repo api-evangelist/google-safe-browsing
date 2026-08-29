@@ -4,6 +4,18 @@ description: >-
   The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against
   Google-generated lists of unsafe web resources including malware, social engineering, unwanted software, and
   potentially harmful applications.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
