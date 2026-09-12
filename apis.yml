@@ -120,6 +120,8 @@ apis:
   - type: JSONSchema
     url: json-schema/ThreatMatch.json
 common:
+  - type: Website
+    url: https://www.google.com/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-safe-browsing/overview
   - type: AgenticAccess
@@ -153,3 +155,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: google
+x-relationship: product

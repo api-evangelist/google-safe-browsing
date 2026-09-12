@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Google Safe Browsing fullHashes:find API
+  title: Google Safe Browsing Full Hashes:find API
   description: The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.
   version: 4.0.0
   contact:
@@ -35,6 +35,30 @@ paths:
       - fullHashes:find
 components:
   schemas:
+    ThreatMatch:
+      type: object
+      properties:
+        threatType:
+          type: string
+        platformType:
+          type: string
+        threatEntryType:
+          type: string
+        threat:
+          $ref: '#/components/schemas/ThreatEntry'
+        threatEntryMetadata:
+          type: object
+        cacheDuration:
+          type: string
+    ThreatEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+        url:
+          type: string
+        digest:
+          type: string
     FindFullHashesRequest:
       type: object
       properties:
@@ -100,30 +124,6 @@ components:
         minimumWaitDuration:
           type: string
         negativeCacheDuration:
-          type: string
-    ThreatMatch:
-      type: object
-      properties:
-        threatType:
-          type: string
-        platformType:
-          type: string
-        threatEntryType:
-          type: string
-        threat:
-          $ref: '#/components/schemas/ThreatEntry'
-        threatEntryMetadata:
-          type: object
-        cacheDuration:
-          type: string
-    ThreatEntry:
-      type: object
-      properties:
-        hash:
-          type: string
-        url:
-          type: string
-        digest:
           type: string
   securitySchemes:
     ApiKeyAuth:
