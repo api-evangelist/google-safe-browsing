@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Safe Browsing fullHashes:find Threat Matches:find API
+  title: Google Safe Browsing Threat Matches:find API
   description: The Google Safe Browsing API enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. It supports threat list management, URL checking, and hash-based lookups.
   version: 4.0.0
   contact:
@@ -35,25 +35,6 @@ paths:
       - threatMatches:find
 components:
   schemas:
-    FindThreatMatchesResponse:
-      type: object
-      properties:
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThreatMatch'
-    FindThreatMatchesRequest:
-      type: object
-      properties:
-        client:
-          type: object
-          properties:
-            clientId:
-              type: string
-            clientVersion:
-              type: string
-        threatInfo:
-          $ref: '#/components/schemas/ThreatInfo'
     ThreatMatch:
       type: object
       properties:
@@ -68,15 +49,6 @@ components:
         threatEntryMetadata:
           type: object
         cacheDuration:
-          type: string
-    ThreatEntry:
-      type: object
-      properties:
-        hash:
-          type: string
-        url:
-          type: string
-        digest:
           type: string
     ThreatInfo:
       type: object
@@ -117,6 +89,34 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ThreatEntry'
+    FindThreatMatchesResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatMatch'
+    FindThreatMatchesRequest:
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        threatInfo:
+          $ref: '#/components/schemas/ThreatInfo'
+    ThreatEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+        url:
+          type: string
+        digest:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
