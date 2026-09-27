@@ -35,20 +35,14 @@ paths:
       - threatMatches:find
 components:
   schemas:
-    ThreatMatch:
+    ThreatEntry:
       type: object
       properties:
-        threatType:
+        hash:
           type: string
-        platformType:
+        url:
           type: string
-        threatEntryType:
-          type: string
-        threat:
-          $ref: '#/components/schemas/ThreatEntry'
-        threatEntryMetadata:
-          type: object
-        cacheDuration:
+        digest:
           type: string
     ThreatInfo:
       type: object
@@ -89,13 +83,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ThreatEntry'
-    FindThreatMatchesResponse:
-      type: object
-      properties:
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThreatMatch'
     FindThreatMatchesRequest:
       type: object
       properties:
@@ -108,14 +95,27 @@ components:
               type: string
         threatInfo:
           $ref: '#/components/schemas/ThreatInfo'
-    ThreatEntry:
+    FindThreatMatchesResponse:
       type: object
       properties:
-        hash:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatMatch'
+    ThreatMatch:
+      type: object
+      properties:
+        threatType:
           type: string
-        url:
+        platformType:
           type: string
-        digest:
+        threatEntryType:
+          type: string
+        threat:
+          $ref: '#/components/schemas/ThreatEntry'
+        threatEntryMetadata:
+          type: object
+        cacheDuration:
           type: string
   securitySchemes:
     ApiKeyAuth:

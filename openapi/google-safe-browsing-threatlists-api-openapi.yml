@@ -29,6 +29,13 @@ paths:
       - threatLists
 components:
   schemas:
+    ListThreatListsResponse:
+      type: object
+      properties:
+        threatLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatListDescriptor'
     ThreatListDescriptor:
       type: object
       properties:
@@ -38,13 +45,6 @@ components:
           type: string
         threatEntryType:
           type: string
-    ListThreatListsResponse:
-      type: object
-      properties:
-        threatLists:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThreatListDescriptor'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
