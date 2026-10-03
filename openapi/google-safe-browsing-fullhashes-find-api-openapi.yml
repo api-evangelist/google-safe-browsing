@@ -35,15 +35,6 @@ paths:
       - fullHashes:find
 components:
   schemas:
-    ThreatEntry:
-      type: object
-      properties:
-        hash:
-          type: string
-        url:
-          type: string
-        digest:
-          type: string
     FindFullHashesRequest:
       type: object
       properties:
@@ -60,6 +51,21 @@ components:
             type: string
         threatInfo:
           $ref: '#/components/schemas/ThreatInfo'
+    ThreatMatch:
+      type: object
+      properties:
+        threatType:
+          type: string
+        platformType:
+          type: string
+        threatEntryType:
+          type: string
+        threat:
+          $ref: '#/components/schemas/ThreatEntry'
+        threatEntryMetadata:
+          type: object
+        cacheDuration:
+          type: string
     ThreatInfo:
       type: object
       properties:
@@ -99,6 +105,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ThreatEntry'
+    ThreatEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+        url:
+          type: string
+        digest:
+          type: string
     FindFullHashesResponse:
       type: object
       properties:
@@ -109,21 +124,6 @@ components:
         minimumWaitDuration:
           type: string
         negativeCacheDuration:
-          type: string
-    ThreatMatch:
-      type: object
-      properties:
-        threatType:
-          type: string
-        platformType:
-          type: string
-        threatEntryType:
-          type: string
-        threat:
-          $ref: '#/components/schemas/ThreatEntry'
-        threatEntryMetadata:
-          type: object
-        cacheDuration:
           type: string
   securitySchemes:
     ApiKeyAuth:

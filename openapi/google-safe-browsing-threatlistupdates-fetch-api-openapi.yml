@@ -35,15 +35,6 @@ paths:
       - threatListUpdates:fetch
 components:
   schemas:
-    FetchThreatListUpdatesResponse:
-      type: object
-      properties:
-        listUpdateResponses:
-          type: array
-          items:
-            type: object
-        minimumWaitDuration:
-          type: string
     FetchThreatListUpdatesRequest:
       type: object
       properties:
@@ -69,6 +60,15 @@ components:
                 type: string
               constraints:
                 type: object
+    FetchThreatListUpdatesResponse:
+      type: object
+      properties:
+        listUpdateResponses:
+          type: array
+          items:
+            type: object
+        minimumWaitDuration:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
