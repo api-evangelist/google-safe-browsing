@@ -35,13 +35,18 @@ paths:
       - threatMatches:find
 components:
   schemas:
-    FindThreatMatchesResponse:
+    FindThreatMatchesRequest:
       type: object
       properties:
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThreatMatch'
+        client:
+          type: object
+          properties:
+            clientId:
+              type: string
+            clientVersion:
+              type: string
+        threatInfo:
+          $ref: '#/components/schemas/ThreatInfo'
     ThreatMatch:
       type: object
       properties:
@@ -96,18 +101,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ThreatEntry'
-    FindThreatMatchesRequest:
+    FindThreatMatchesResponse:
       type: object
       properties:
-        client:
-          type: object
-          properties:
-            clientId:
-              type: string
-            clientVersion:
-              type: string
-        threatInfo:
-          $ref: '#/components/schemas/ThreatInfo'
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThreatMatch'
     ThreatEntry:
       type: object
       properties:

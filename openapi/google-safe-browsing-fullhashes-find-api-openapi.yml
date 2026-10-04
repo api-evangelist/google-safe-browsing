@@ -105,15 +105,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ThreatEntry'
-    ThreatEntry:
-      type: object
-      properties:
-        hash:
-          type: string
-        url:
-          type: string
-        digest:
-          type: string
     FindFullHashesResponse:
       type: object
       properties:
@@ -124,6 +115,15 @@ components:
         minimumWaitDuration:
           type: string
         negativeCacheDuration:
+          type: string
+    ThreatEntry:
+      type: object
+      properties:
+        hash:
+          type: string
+        url:
+          type: string
+        digest:
           type: string
   securitySchemes:
     ApiKeyAuth:
